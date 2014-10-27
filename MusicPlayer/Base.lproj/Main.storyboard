@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="soa-dM-IvZ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Music Player View Controller-->
+        <scene sceneID="fvu-TB-vq0">
+            <objects>
+                <viewController id="HWg-QF-lZq" customClass="MusicPlayerViewController" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7DO-Po-QDM"/>
+                        <viewControllerLayoutGuide type="bottom" id="rmJ-sa-NY0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uzB-tM-Av7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="musicPlayer.ico" translatesAutoresizingMaskIntoConstraints="NO" id="aVv-dv-H8g">
+                                <rect key="frame" x="27" y="88" width="351" height="282"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUN-4k-SDT">
+                                <rect key="frame" x="171" y="394" width="72" height="41"/>
+                                <state key="normal" backgroundImage="play.ico">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonClicked" destination="HWg-QF-lZq" eventType="touchUpInside" id="fI6-ql-XkC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goto Songs List>>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIZ-Kq-mti">
+                                <rect key="frame" x="52" y="481" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.63850361109999998" green="0.19014327810000001" blue="0.2899608582" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IX0-0y-Y5l">
+                                <rect key="frame" x="205" y="464" width="65" height="49"/>
+                                <state key="normal" backgroundImage="home.ico">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="K5t-Eq-n8d" kind="show" identifier="gotoHome" id="tit-lG-xDp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ER8-bN-J9I"/>
+                    <connections>
+                        <outlet property="playButton" destination="lUN-4k-SDT" id="nrG-ne-C2X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qum-Nr-aab" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="90"/>
+        </scene>
+        <!--Songs List Table-->
+        <scene sceneID="KjK-l7-Bwi">
+            <objects>
+                <tableViewController id="K5t-Eq-n8d" customClass="SongsListTable" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="w5n-3S-Mbs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songs" id="BYl-Pl-SVw">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BYl-Pl-SVw" id="khw-Be-mTq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="HWg-QF-lZq" kind="show" identifier="gotoPlayer" id="xnf-KD-vur"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="K5t-Eq-n8d" id="PZp-iF-AqR"/>
+                            <outlet property="delegate" destination="K5t-Eq-n8d" id="rMr-3m-5dg"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDT-RI-pbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1676" y="90"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CjC-Qz-zvK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="soa-dM-IvZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TDw-aQ-LPf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HWg-QF-lZq" kind="relationship" relationship="rootViewController" id="b6J-7o-Rjk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02g-Vo-zuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151" y="90"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home.ico" width="256" height="256"/>
+        <image name="musicPlayer.ico" width="256" height="256"/>
+        <image name="play.ico" width="256" height="256"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xnf-KD-vur"/>
+    </inferredMetricsTieBreakers>
+</document>
